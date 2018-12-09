@@ -7,6 +7,7 @@ var Products = React.createClass({
         imgURL: React.PropTypes.string.isRequired, // URL Адрес изображения
         price: React.PropTypes.number.isRequired, //Цена
         count: React.PropTypes.number.isRequired, //Количество товара в наличии  
+        year: React.PropTypes.number.isRequired, //Год выхода
     },
 
   render: function() {
@@ -17,6 +18,7 @@ var Products = React.createClass({
         ),
         React.DOM.td({className:'Price'},this.props.price+' $'),
         React.DOM.td({className:'Count'},this.props.count),
+        React.DOM.td({className:'Year'},this.props.year),
     );
     },
 

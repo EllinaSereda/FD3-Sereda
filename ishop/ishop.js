@@ -11,6 +11,7 @@ var IShop = React.createClass({
             imgURL: React.PropTypes.string.isRequired, // URL Адрес изображения
             price: React.PropTypes.number.isRequired, //Цена
             count: React.PropTypes.number.isRequired, //Количество товара в наличии 
+            year: React.PropTypes.number.isRequired, //Год выхода
           })
         ),
         head:React.PropTypes.arrayOf(
@@ -25,7 +26,7 @@ var IShop = React.createClass({
     render: function() {
       var productsCode=this.props.goods.map( v =>  //Список товаров
         React.createElement(Products, { key:v.code,
-          name:v.name, code:v.code, price:v.price, imgURL:v.imgURL,count:v.count} )
+          name:v.name, code:v.code, price:v.price, imgURL:v.imgURL,count:v.count,year:v.year} )
       );
       var headCode=this.props.head.map( v => //Шапка таблицы
         React.createElement(Head, {key:v.code, code:v.code, text:v.text})
