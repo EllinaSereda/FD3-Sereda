@@ -1,0 +1,26 @@
+.IShop{
+    text-align:center;
+}
+.IShop table{
+    border-collapse: collapse;
+    width:90%;
+    margin:0 auto;
+}
+.IShop img{
+    width:250px;
+}
+.IShop td,th{
+    border: 1px solid black;
+    font-size:20px;
+    padding: 10px;
+}
+.IShop th{
+    font-size: 25px;
+    background-color: lightcyan;
+}
+.IShop .ShopName{
+    font-size: 40px;
+}
+.IShop .Name{
+    font-weight: bold;
+}
