@@ -6,8 +6,8 @@ var Head = React.createClass({
         code: React.PropTypes.number.isRequired, //Уникальный код
     },
 
-  render: function() {
-    return React.DOM.th({key:this.props.code,className:'HeadTr'},this.props.text);
+    render: function() {
+        return React.DOM.th({key:this.props.code},this.props.text);
     },
 
 
