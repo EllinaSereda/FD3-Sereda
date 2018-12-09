@@ -12,29 +12,33 @@ var IShop = React.createClass({
             price: React.PropTypes.number.isRequired, //Цена
             count: React.PropTypes.number.isRequired, //Количество товара в наличии 
           })
+        ),
+        head:React.PropTypes.arrayOf(
+          React.PropTypes.shape({
+            text: React.PropTypes.string.isRequired,
+            code: React.PropTypes.number.isRequired,
+          })
         )
       },
   
   
     render: function() {
-      var productsCode=this.props.goods.map( v =>
+      var productsCode=this.props.goods.map( v =>  //Список товаров
         React.createElement(Products, { key:v.code,
           name:v.name, code:v.code, price:v.price, imgURL:v.imgURL,count:v.count} )
+      );
+      var headCode=this.props.head.map( v => //Шапка таблицы
+        React.createElement(Head, {key:v.code, code:v.code, text:v.text})
       );
 
       return React.DOM.div( {className:'IShop'}, 
         React.DOM.h2( {className:'ShopName'},this.props.shopName),
         React.DOM.table( {className:'Table'},
-            React.DOM.thead( {className:'Head'},
-                React.DOM.tr({className:'HeadTr'},
-                    React.DOM.th({className:'HeadName'},'Name'),
-                    React.DOM.th({className:'HeadIMG'},'Picture'),
-                    React.DOM.th({className:'HeadPrice'},'Price'),
-                    React.DOM.th({className:'HeadRemain'},'Remain'),
-                ),
-            ),
-            React.createElement(Products, {goods:this.props.goodså} ),     
+          React.DOM.thead( {className:'Head'},
+              React.DOM.tr({className:'HeadTr'},headCode),
           ),
+          React.DOM.tbody({className:'Products'}, productsCode),     
+        ),
       );
     },
   

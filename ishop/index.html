@@ -12,10 +12,17 @@
       
   <script src="IShop.js"></script>
   <script src="Products.js"></script>
+  <script src="Head.js"></script>
   <link rel="stylesheet" type="text/css" href="ishop.css" />
 
   <script>
-    var shop="I-Store"
+    var shop="I-Store";
+    var tableHead=[
+        {text:'Name of the Product',code:1},
+        {text:'Picture',code:2},
+        {text:'Price',code:3},
+        {text:'Count',code:4},
+    ];
     var goods=[ 
       {name:'Iphone X',code:1,price:599,imgURL:'https://cdn0.it4profit.com/catalog-categories/7/770/iphx.png',count:14},
       {name:'Iphone XR',code:2,price:749,imgURL:'https://cdn0.it4profit.com/catalog-categories/7/4554/compare_iphonexr_black_large.png',count:18}, 
@@ -25,7 +32,7 @@
     ];
 
     ReactDOM.render(
-      React.createElement(IShop,{shopName:shop,goods:goods}), 
+      React.createElement(IShop,{shopName:shop,goods:goods,head:tableHead}), 
       document.getElementById('container') 
     );
 
