@@ -21,13 +21,48 @@ var IShop = React.createClass({
           })
         )
       },
-  
+      getInitialState: function() {
+        return { 
+          selectedAnswerCode: null,
+          deletedAnswerCode:[],
+          deleted:[],
+        };
+      },
+      answerSelected: function(code) {
+
+        console.log('выбран ответ с кодом '+code);
+        this.setState({selectedAnswerCode:code} );
+      },
+      deletedtr: function(code) {
+        console.log(this.state.deleted);
+        this.setState( (prevState, props) => { console.log (prevState.deleted);
+          prevState.deleted.push(code);
+          console.log(prevState.deleted);
+          return {deletedAnswerCode:prevState.deleted} } );
+      },
+      
+    
   
     render: function() {
+
+
       var productsCode=this.props.goods.map( v =>  //Список товаров
-        React.createElement(Products, { key:v.code,
-          name:v.name, code:v.code, price:v.price, imgURL:v.imgURL,count:v.count,year:v.year} )
+        React.createElement(Products, { 
+          key:v.code,
+          name:v.name, 
+          code:v.code, 
+          price:v.price, 
+          imgURL:v.imgURL,
+          count:v.count,
+          year:v.year,
+          cbDeleted: this.deletedtr,
+          cbSelected: this.answerSelected,
+          selectedAnswerCode:this.state.selectedAnswerCode,
+          deletedAnswerCode:this.state.deletedAnswerCode,
+        } )
       );
+
+
       var headCode=this.props.head.map( v => //Шапка таблицы
         React.createElement(Head, {key:v.code, code:v.code, text:v.text})
       );

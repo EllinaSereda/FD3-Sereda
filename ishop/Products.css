@@ -4,3 +4,6 @@
 .Products .Name{
     font-weight: bold;
 }
+.Products .selectedTR{
+    background-color: yellow;
+}
