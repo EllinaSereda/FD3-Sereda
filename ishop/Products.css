@@ -5,5 +5,8 @@
     font-weight: bold;
 }
 .Products .selectedTR{
-    background-color: yellow;
+    background-color:rgb(255,220,200);
+}
+.Products input{
+    background-color: plum;
 }

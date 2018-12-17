@@ -23,21 +23,17 @@ var IShop = React.createClass({
       },
       getInitialState: function() {
         return { 
-          selectedAnswerCode: null,
-          deletedAnswerCode:[],
+          selectedAnswerCode: null, //Выбранный товар
+          deletedAnswerCode:[], //Удаленные товары
           deleted:[],
         };
       },
       answerSelected: function(code) {
-
-        console.log('выбран ответ с кодом '+code);
         this.setState({selectedAnswerCode:code} );
       },
       deletedtr: function(code) {
-        console.log(this.state.deleted);
-        this.setState( (prevState, props) => { console.log (prevState.deleted);
+        this.setState( (prevState, props) => {
           prevState.deleted.push(code);
-          console.log(prevState.deleted);
           return {deletedAnswerCode:prevState.deleted} } );
       },
       

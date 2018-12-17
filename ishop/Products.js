@@ -24,7 +24,6 @@ render: function() {
     var classN=null;
     (this.props.code==this.props.selectedAnswerCode)?
     classN="selectedTR":classN="tr"; 
-    console.log(this.props.deletedAnswerCode) ;
     return  (this.props.deletedAnswerCode.some(v => this.props.code==v))?
     null:
     React.DOM.tr({key:this.props.code,className:classN,onClick:this.trClicked},
