@@ -12,16 +12,9 @@ var Filter = React.createClass({
     checkChanged: function(EO){
         console.log(EO.target.checked);
         this.setState( {selectedCode:EO.target.checked} );
-        this.sortArray();
     },
     textChanged: function(EO){
         this.setState({textEntered:EO.target.value});
-        this.sortArray();
-    },
-    sortArray: function(){
-        console.log(this.state.selectedCode!=true);
-    
-        
     },
     getInitialState: function() {
         return { 
