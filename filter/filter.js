@@ -26,8 +26,8 @@ var Filter = React.createClass({
     
   
     render: function() {
-    this.state.array=this.props.words.filter(v=>v.text.indexOf(this.state.textEntered)!=(-1));
-    this.state.selectedCode==true?
+    this.state.array=this.props.words.filter(v=>v.text.indexOf(this.state.textEntered)!=(-1));//Проверяем содержится ли введенный текст
+    this.state.selectedCode==true? //Проверяем включен7а ли сортировка по алфавиту
     this.state.array.sort(compare):this.state.array.sort((a,b)=>a.code-b.code);
         function compare(a,b){
             if (a.text<b.text){
