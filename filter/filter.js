@@ -10,7 +10,6 @@ var Filter = React.createClass({
         ),
       },
     checkChanged: function(EO){
-        console.log(EO.target.checked);
         this.setState( {selectedCode:EO.target.checked} );
     },
     textChanged: function(EO){
