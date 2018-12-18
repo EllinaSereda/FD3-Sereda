@@ -31,7 +31,6 @@ var IShop = React.createClass({
         this.setState({selectedAnswerCode:code} );
       },
       deletedtr: function(code) {
-        console.log(code);
         this.setState( (prevState, props) => {
           var ind=prevState.products.reduce(fin,0);
           function fin(r,v,i,a){
