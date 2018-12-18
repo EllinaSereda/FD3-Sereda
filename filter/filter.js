@@ -10,7 +10,6 @@ var Filter = React.createClass({
         ),
       },
     checkChanged: function(EO){
-        console.log(EO.target.checked);
         this.setState({selectedCode:EO.target.checked},this.sort);
     },
     textChanged: function(EO){
@@ -39,7 +38,6 @@ var Filter = React.createClass({
         this.setState({array:this.state.array})
     },
     
-  
     render: function() {
       
     var arrayCode=this.state.array.map(v=>React.DOM.li({key:v.code}, v.text ));
