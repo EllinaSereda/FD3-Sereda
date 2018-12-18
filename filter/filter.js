@@ -1,13 +1,8 @@
 var Filter = React.createClass({
 
-    displayName: 'IShop',
+    displayName: 'Filter',
     propTypes: {     
-        goods:React.PropTypes.arrayOf(//Должен получить массив, элементами которого являются объекты (хэши) со следующими свойстваними (ключами)
-          React.PropTypes.shape({
-            text: React.PropTypes.string.isRequired, //Слово
-            code: React.PropTypes.number.isRequired, //Уникальный код
-          })
-        ),
+        words:React.PropTypes.array,//Должен получить массив, элементами которого являются объекты (хэши) со следующими свойстваними (ключами)
       },
     checkChanged: function(EO){
         this.setState({selectedCode:EO.target.checked},this.sort);
@@ -23,24 +18,25 @@ var Filter = React.createClass({
         };
     },
     sort(){
-        this.state.array=this.props.words.filter(v=>v.text.indexOf(this.state.textEntered)!=(-1));//Проверяем наличие введенного текста
-        this.state.selectedCode==true? //Проверяем включен7а ли сортировка по алфавиту
-        this.state.array.sort(compare):this.state.array.sort((a,b)=>a.code-b.code);
+        this.state.array=this.props.words.filter(v=>v.indexOf(this.state.textEntered)!=(-1));//Проверяем наличие введенного текста
+        this.state.selectedCode==true? //Проверяем включена ли сортировка по алфавиту
+        this.state.array.sort(compare):this.state.array;
         function compare(a,b){
-            if (a.text<b.text){
+            if (a<b){
                 return -1;
             }
-            if (a.text>b.text){
+            if (a>b){
                 return 1;
             }
             return 0;
         } 
+        
         this.setState({array:this.state.array})
     },
     
     render: function() {
       
-    var arrayCode=this.state.array.map(v=>React.DOM.li({key:v.code}, v.text ));
+    var arrayCode=this.state.array.map((v,i)=>React.DOM.li({key:i},v));
 
       return React.DOM.div( {className:'Filter'},
       React.DOM.input( {type:'checkbox',onClick:this.checkChanged}),
