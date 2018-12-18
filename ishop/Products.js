@@ -10,7 +10,6 @@ var Products = React.createClass({
         year: React.PropTypes.number.isRequired, //Год выхода
         cbSelected: React.PropTypes.func.isRequired, //нажатая строка
         selectedAnswerCode: React.PropTypes.number,
-        deletedAnswerCode: React.PropTypes.array, 
         cbDeleted: React.PropTypes.func.isRequired,
     },
     trClicked: function(EO) {
@@ -24,9 +23,7 @@ render: function() {
     var classN=null;
     (this.props.code==this.props.selectedAnswerCode)?
     classN="selectedTR":classN="tr"; 
-    return  (this.props.deletedAnswerCode.some(v => this.props.code==v))?
-    null:
-    React.DOM.tr({key:this.props.code,className:classN,onClick:this.trClicked},
+    return  React.DOM.tr({key:this.props.code,className:classN,onClick:this.trClicked},
         React.DOM.td({className:'Name'},this.props.name),
         React.DOM.td({className:'IMG'},
             React.DOM.img({className:'IMG',src:this.props.imgURL}),

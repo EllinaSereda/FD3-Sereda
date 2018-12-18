@@ -24,17 +24,24 @@ var IShop = React.createClass({
       getInitialState: function() {
         return { 
           selectedAnswerCode: null, //Выбранный товар
-          deletedAnswerCode:[], //Удаленные товары
-          deleted:[],
+          products:this.props.goods, //список товаров
         };
       },
       answerSelected: function(code) {
         this.setState({selectedAnswerCode:code} );
       },
       deletedtr: function(code) {
+        console.log(code);
         this.setState( (prevState, props) => {
-          prevState.deleted.push(code);
-          return {deletedAnswerCode:prevState.deleted} } );
+          var ind=prevState.products.reduce(fin,0);
+          function fin(r,v,i,a){
+            if (v.code==code)
+            r=i;
+            return r;
+          };
+          prevState.products.splice(ind,1);
+          return {products:prevState.products} 
+        } );
       },
       
     
@@ -42,7 +49,7 @@ var IShop = React.createClass({
     render: function() {
 
 
-      var productsCode=this.props.goods.map( v =>  //Список товаров
+      var productsCode=this.state.products.map( v =>  //Список товаров
         React.createElement(Products, { 
           key:v.code,
           name:v.name, 
@@ -54,7 +61,6 @@ var IShop = React.createClass({
           cbDeleted: this.deletedtr,
           cbSelected: this.answerSelected,
           selectedAnswerCode:this.state.selectedAnswerCode,
-          deletedAnswerCode:this.state.deletedAnswerCode,
         } )
       );
 

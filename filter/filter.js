@@ -10,10 +10,11 @@ var Filter = React.createClass({
         ),
       },
     checkChanged: function(EO){
-        this.setState( {selectedCode:EO.target.checked} );
+        console.log(EO.target.checked);
+        this.setState({selectedCode:EO.target.checked},this.sort);
     },
     textChanged: function(EO){
-        this.setState({textEntered:EO.target.value});
+        this.setState({textEntered:EO.target.value},this.sort);
     },
     getInitialState: function() {
         return { 
@@ -22,12 +23,10 @@ var Filter = React.createClass({
           array:this.props.words,
         };
     },
-    
-  
-    render: function() {
-    this.state.array=this.props.words.filter(v=>v.text.indexOf(this.state.textEntered)!=(-1));//Проверяем содержится ли введенный текст
-    this.state.selectedCode==true? //Проверяем включен7а ли сортировка по алфавиту
-    this.state.array.sort(compare):this.state.array.sort((a,b)=>a.code-b.code);
+    sort(){
+        this.state.array=this.props.words.filter(v=>v.text.indexOf(this.state.textEntered)!=(-1));//Проверяем наличие введенного текста
+        this.state.selectedCode==true? //Проверяем включен7а ли сортировка по алфавиту
+        this.state.array.sort(compare):this.state.array.sort((a,b)=>a.code-b.code);
         function compare(a,b){
             if (a.text<b.text){
                 return -1;
@@ -36,7 +35,13 @@ var Filter = React.createClass({
                 return 1;
             }
             return 0;
-        }
+        } 
+        this.setState({array:this.state.array})
+    },
+    
+  
+    render: function() {
+      
     var arrayCode=this.state.array.map(v=>React.DOM.li({key:v.code}, v.text ));
 
       return React.DOM.div( {className:'Filter'},
