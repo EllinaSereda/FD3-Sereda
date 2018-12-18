@@ -32,14 +32,7 @@ var IShop = React.createClass({
       },
       deletedtr: function(code) {
         this.setState( (prevState, props) => {
-          var ind=prevState.products.reduce(fin,0);
-          function fin(r,v,i,a){
-            if (v.code==code)
-            r=i;
-            return r;
-          };
-          prevState.products.splice(ind,1);
-          return {products:prevState.products} 
+          return {products:prevState.products.filter(v=>v.code!=code)} 
         } );
       },
       
