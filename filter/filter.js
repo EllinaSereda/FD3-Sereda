@@ -18,9 +18,9 @@ var Filter = React.createClass({
         };
     },
     sort(){
-        this.state.array=this.props.words.filter(v=>v.indexOf(this.state.textEntered)!=(-1));//Проверяем наличие введенного текста
-        this.state.selectedCode==true? //Проверяем включена ли сортировка по алфавиту
-        this.state.array.sort(compare):this.state.array;
+        var massiv=this.props.words.filter(v=>v.indexOf(this.state.textEntered)!=(-1));//Проверяем наличие введенного текста
+        if (this.state.selectedCode) //Проверяем включена ли сортировка по алфавиту
+        massiv.sort(compare);
         function compare(a,b){
             if (a<b){
                 return -1;
@@ -31,7 +31,7 @@ var Filter = React.createClass({
             return 0;
         } 
         
-        this.setState({array:this.state.array})
+        this.setState({array:massiv})
     },
     
     render: function() {
