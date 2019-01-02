@@ -30,7 +30,7 @@ render() {
         <td className ={'IMG'}>
         <img className ={'IMG'} src ={this.props.imgURL}/> 
         </td>
-        <td className ={'Price'}>{this.props.price}+' $'</td> 
+        <td className ={'Price'}>{this.props.price} $</td> 
         <td className ={'Count'}>{this.props.count}</td>
         <td className ={'Year'}>{this.props.year}</td>
         <td><input type ={'button'} value ={'Delete'} onClick ={this.deleteTr}/></td>

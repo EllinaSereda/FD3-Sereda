@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-import './ishop.css';
+import './IShop.css';
 
 import Products from './Products';
 import Head from './Head';

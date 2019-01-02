@@ -1,8 +1,8 @@
 [
-    {"text":"Product Name","code":"1"},
-    {"text":"Picture","code":"2"},
-    {"text":"Price","code":"3"},
-    {"text":"In Stock","code":"4"},
-    {"text":"Year of Release","code":"5"},
-    {"text":"Control","code":"6"}
+    {"text":"Product Name","code":1},
+    {"text":"Picture","code":2},
+    {"text":"Price","code":3},
+    {"text":"In Stock","code":4},
+    {"text":"Year of Release","code":5},
+    {"text":"Control","code":6}
 ]
