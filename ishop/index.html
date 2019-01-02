@@ -6,41 +6,7 @@
 </head> 
 <body> 
   <div id="container"></div> 
-      
-  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
-  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
-      
-  <script src="IShop.js"></script>
-  <script src="Products.js"></script>
-  <script src="Head.js"></script>
-  <link rel="stylesheet" type="text/css" href="ishop.css" />
-  <link rel="stylesheet" type="text/css" href="Products.css" />
-
-  <script>
-    var shop="I-Store";
-    var tableHead=[
-        {text:'Product Name',code:1},
-        {text:'Picture',code:2},
-        {text:'Price',code:3},
-        {text:'In Stock',code:4},
-        {text:'Year of Release',code:5},
-        {text:'Control',code:6},
-
-    ];
-    var goods=[ 
-      {name:'Iphone X',code:1,price:599,imgURL:'https://cdn0.it4profit.com/catalog-categories/7/770/iphx.png',count:14,year:2017},
-      {name:'Iphone XR',code:2,price:749,imgURL:'https://cdn0.it4profit.com/catalog-categories/7/4554/compare_iphonexr_black_large.png',count:18, year:2018}, 
-      {name:'Ipad pro',code:3,price:799,imgURL:'https://cdn0.it4profit.com/catalog-categories/7/11/ip129_new.png',count:10,year:2016},
-      {name:'Ipad mini',code:4,price:799,imgURL:'https://cdn0.it4profit.com/catalog-categories/7/38/ipm_4.png',count:8,year:2015},
-      {name:'Macbook pro',code:5,price:1599,imgURL:'https://cdn0.it4profit.com/catalog-categories/7/3/ambp_osx_big1.png',count:2,year:2017},
-    ];
-
-    ReactDOM.render(
-      React.createElement(IShop,{shopName:shop,goods:goods,head:tableHead}), 
-      document.getElementById('container') 
-    );
-
-  </script>
-
+  <script src="bundle.js"></script>
+    
 </body> 
 </html>
