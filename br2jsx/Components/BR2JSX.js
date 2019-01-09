@@ -10,9 +10,11 @@ class BR2JSX extends React.Component {
   
   render() {
     let code=this.props.text.split(/<.*?br.*?>/ig).map ((v,i) =>{
-      return <span key={i}>{v}<br/></span>
+      return v;
     })
-    console.log(code);
+    for(let i=1;i<code.length;i=i+2){
+      code.splice(i,0,<br/>);
+    }
     return (
       <div className="BR2JSX">
         {code}
