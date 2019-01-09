@@ -9,7 +9,6 @@ class RainbowFrame extends React.Component {
   };
   
   render() {
-    console.log(this.props.colors);
     let code=null;
     this.props.colors.forEach( (v,i,a) => 
         {i==0? code=<div style={{border:"5px solid "+v,padding:"10px"}}>{this.props.children}</div>:
