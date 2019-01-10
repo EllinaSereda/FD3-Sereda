@@ -1,0 +1,30 @@
+
+.Card span.fl{
+    width:200px;
+}
+.Card input[type="text"]{
+    padding:8px;
+    float:left;
+    display:block;
+    width:200px;
+    margin:8px
+}
+.Card span{
+    padding:15px;
+    float:left;
+    display:block;
+    width:200px;
+}
+.Card br{
+    clear:both;
+}
+.Card input[type="button"]{
+    width:200px;
+    background-color: plum;
+}
+.Card span.validation{
+    color:red;
+}
+.Card img{
+    width:250px;
+}

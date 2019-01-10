@@ -6,6 +6,7 @@ import './IShop.css';
 
 import Products from './Products';
 import Head from './Head';
+import Card from './Card';
 
 class IShop extends React.Component{
 
@@ -29,22 +30,46 @@ class IShop extends React.Component{
         )
       }
       state={ 
+          CardMode:0,//0- карточки нет, 1- катрочка в режиме отображения, 2 - в режиме редактирования
           selectedAnswerCode: null, //Выбранный товар
           products:this.props.goods, //список товаров
+          selectedProduct:null,//данные выбранного продукта
+          newItemID:null,
       }
       answerSelected = (code) =>{
         this.setState({selectedAnswerCode:code} );
+        var good=this.state.products.find(v=>v.code==code);
+        this.setState({selectedProduct:good});
       }
       deletedtr = (code)=> {
         this.setState( (prevState, props) => {
           return {products:prevState.products.filter(v=>v.code!=code)} 
         } );
       }
-      
+      edit = (code)=>{
+        this.setState({CardMode:code} );
+      }
+      saveCard=(item)=>{
+        let mas=this.state.products.map(v=>{
+         return v.code==item.code?item:v;
+        })
+        this.setState({products:mas});
+      }
+     add=()=>{
+      this.setState({selectedAnswerCode:null} );
+      this.setState({CardMode:3} );
+      this.setState({newItemID:Math.max.apply(null, this.state.products.map(v=>v.code))+1});
+     }
+     addProduct=(item)=>{
+       let newMas=this.state.products.map(v=>v);
+       newMas.push(item);
+       this.setState({products:newMas});
+       this.setState({selectedAnswerCode:null});
+     }
+     
     
   
     render(){
-
       var productsCode=this.state.products.map( v =>  //Список товаров
         <Products 
           key={v.code}
@@ -55,7 +80,9 @@ class IShop extends React.Component{
           count={v.count}
           year={v.year}
           cbDeleted={ this.deletedtr}
+          CardMode={this.state.CardMode}
           cbSelected={ this.answerSelected}
+          cbCardMode={this.edit}
           selectedAnswerCode={this.state.selectedAnswerCode}/>
       );
 
@@ -73,6 +100,15 @@ class IShop extends React.Component{
           </thead>
           <tbody className='Products'>{productsCode}</tbody>   
         </table>
+        <input type ={'button'} value ={'Add product'} onClick={this.add} />
+        <Card
+         CardMode={this.state.CardMode}
+         product={this.state.selectedProduct}
+         cbSave={this.saveCard}
+         cbEdit={this.edit}
+         newItemID={this.state.newItemID}
+         cbAdd={this.addProduct}
+        />
         </div>
       )
     }
