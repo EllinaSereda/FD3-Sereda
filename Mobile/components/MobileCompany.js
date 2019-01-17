@@ -63,7 +63,6 @@ addToCliends = (client) =>{
   newClients.push(client);
   this.setState({clients:newClients});
   this.setState({newItemID:(this.state.newItemID+1)});
-  
   this.changeCardMode(0);
 
 }
@@ -108,7 +107,6 @@ changeClient = (client) => {   //Редактирование клиента
     this.setStatus(2);
   }
 
-  status=0;
   setStatus = (mode) =>{
     let changed=false;
     if (this.state.status!=mode){
@@ -116,8 +114,6 @@ changeClient = (client) => {   //Редактирование клиента
     }
     if ( changed ){
       this.setState({status:mode});
-      voteEvents.emit('EStatus',mode);
-      this.status=mode;
     }
   }
 
@@ -128,7 +124,7 @@ changeClient = (client) => {   //Редактирование клиента
     console.log("MobileCompany render");
 
     var clientsCode=this.state.clients.map( client => {
-        return <MobileClient key={client.id} info={client} />;
+        return <MobileClient status={this.state.status} key={client.id} info={client} />;
       }
     );
 

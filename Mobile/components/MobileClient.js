@@ -6,7 +6,7 @@ import './MobileClient.css';
 class MobileClient extends React.PureComponent {
 
   static propTypes = {
-    
+    status: PropTypes.number.isRequired, 
     info:PropTypes.shape({
     id: PropTypes.number.isRequired, 
       fam: PropTypes.string.isRequired,
@@ -15,17 +15,6 @@ class MobileClient extends React.PureComponent {
     balance: PropTypes.number.isRequired,
   }),
   }
-
-  state = {
-    showMode:0,
-  };
-
-  componentWillReceiveProps = (newProps) => {
-    this.setState({info:newProps.info});
-  };
-  componentDidMount = () => {
-    voteEvents.addListener('EStatus',this.showMode);
-  };
 
   componentWillUnmount = () => {
     voteEvents.removeListener('EStatus',this.showMode);
@@ -47,7 +36,7 @@ class MobileClient extends React.PureComponent {
   render() {
     this.code=null;
     console.log("MobileClient id="+this.props.info.id+" render");
-   switch (this.state.showMode){
+   switch (this.props.status){
       case 0:
         this.code=<tr className='MobileClient'>
                 <td>{this.props.info.fam}</td>
