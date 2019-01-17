@@ -54,10 +54,12 @@ selectCli = (id) =>{  //Какой клиент на редактировани�
 }
 
 deleteClient = (code) =>{
-    this.setState({clients:this.state.clients.filter(v=>v.id!=code)})
+    this.setState({clients:this.state.clients.filter(v=>v.id!=code)},this.setNewId)
   
 }
-
+setNewId = () =>{
+  this.setState({newItemID:this.state.clients.length+1});
+}
 addToCliends = (client) =>{
   let newClients=[...this.state.clients]; // копия самого массива клиентов
   newClients.push(client);
