@@ -129,16 +129,16 @@ changeClient = (client) => {   //Редактирование клиента
       let code=null;
         switch (this.state.status){
           case 0:
-          code=<MobileClient status={this.state.status} key={client.id} info={client} />;
+          code=<MobileClient  key={client.id} info={client} />;
           break;
           case 1:
           if (client.balance>=0){
-            code=<MobileClient status={this.state.status} key={client.id} info={client} />;
+            code=<MobileClient key={client.id} info={client} />;
           }
           break;
           case 2:
           if (client.balance<0){
-            code=<MobileClient status={this.state.status} key={client.id} info={client} />;
+            code=<MobileClient key={client.id} info={client} />;
           }
           break;
         }

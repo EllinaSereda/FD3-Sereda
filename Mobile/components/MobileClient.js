@@ -6,7 +6,6 @@ import './MobileClient.css';
 class MobileClient extends React.PureComponent {
 
   static propTypes = {
-    status: PropTypes.number.isRequired, 
     info:PropTypes.shape({
     id: PropTypes.number.isRequired, 
       fam: PropTypes.string.isRequired,
