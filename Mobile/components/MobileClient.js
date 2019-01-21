@@ -26,7 +26,7 @@ class MobileClient extends React.PureComponent {
     voteEvents.emit('ECard',1); 
   }
   Delete = (EO) =>{
-      EO.stopPropagation();
+     // EO.stopPropagation();
       voteEvents.emit('EDeleted',this.props.info.id); 
 
   }

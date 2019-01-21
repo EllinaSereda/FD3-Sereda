@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import MobileClient from './MobileClient';
 import Card from './Card';
+import {add} from '../modules/add';
+import {change} from '../modules/change';
 import {voteEvents} from './events';
-
 import './MobileCompany.css';
 
 class MobileCompany extends React.PureComponent {
@@ -58,9 +59,7 @@ deleteClient = (code) =>{
   
 }
 addToCliends = (client) =>{
-  let newClients=[...this.state.clients]; // копия самого массива клиентов
-  newClients.push(client);
-  this.setState({clients:newClients});
+  this.setState( (prevState, props) => { return {clients:add(prevState.clients,client)}; } );
   this.setState({newItemID:(this.state.newItemID+1)});
   this.changeCardMode(0);
 
@@ -72,7 +71,8 @@ addClient=()=>{  //добавление клиента
 
 
 changeClient = (client) => {   //Редактирование клиента
-  let changed=false;
+  /*let changed=false;
+
   let newClients=[...this.state.clients]; // копия самого массива клиентов
   newClients.forEach( (c,i) => {
     if ( c.id==client.id ) {
@@ -81,9 +81,10 @@ changeClient = (client) => {   //Редактирование клиента
       newClients[i]=newClient;
       changed=true;
     }
-  } )
-  if ( changed ){
-    this.setState({clients:newClients});
+  } )*/
+  let result=change(this.state.clients,client);
+  if ( result.change ){
+    this.setState({clients:result.mas});
   }
   this.changeCardMode(0);
 }
