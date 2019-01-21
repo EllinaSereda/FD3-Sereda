@@ -53,7 +53,6 @@ test('работа MobileCompany', () => {
   expect(Name[1]).toBe('МТС');
 
   const   Blocked=component.root.find(el =>( el.props.value=='Заблокированные'));
-  //нажмем на кнопку, изменим название компании
   Blocked.props.onClick();
 
   componentTree=component.toJSON();
