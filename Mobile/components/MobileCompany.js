@@ -71,17 +71,7 @@ addClient=()=>{  //добавление клиента
 
 
 changeClient = (client) => {   //Редактирование клиента
-  /*let changed=false;
 
-  let newClients=[...this.state.clients]; // копия самого массива клиентов
-  newClients.forEach( (c,i) => {
-    if ( c.id==client.id ) {
-      let newClient={...c}; // копия хэша изменившегося клиента
-      newClient=client;
-      newClients[i]=newClient;
-      changed=true;
-    }
-  } )*/
   let result=change(this.state.clients,client);
   if ( result.change ){
     this.setState({clients:result.mas});
