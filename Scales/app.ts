@@ -1,25 +1,25 @@
 class Scales {
 
-    protected summWeight:number;
-
-    protected masProduct:Array<string>;
+    protected masProduct:Array<object>;
     
     constructor() {
-        this.summWeight=0; 
+   
         this.masProduct=[];
         
     }
 
     public add(newProd:Product):void{
-        var newElem:string=newProd.getName();
+        var newElem:{name:string,scale:number}={name:newProd.getName(),scale:newProd.getScale()}
         this.masProduct.push(newElem);
-        this.summWeight+=newProd.getScale();
     }
     public getNameList():Array<string> {
-        return this.masProduct;
+        return this.masProduct.map((v:{name:string,scale:number},i:number,a:Array<object>):string => {return v.name});
     }
     public getSumScale():number {
-        return this.summWeight;
+        function sum(r:number,v:{name:string,scale:number},i:number,a:Array<object>):number{
+            return r+v.scale;
+        }
+        return this.masProduct.reduce(sum,0);
     }
     
 }

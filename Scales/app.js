@@ -13,19 +13,20 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Scales = /** @class */ (function () {
     function Scales() {
-        this.summWeight = 0;
         this.masProduct = [];
     }
     Scales.prototype.add = function (newProd) {
-        var newElem = newProd.getName();
+        var newElem = { name: newProd.getName(), scale: newProd.getScale() };
         this.masProduct.push(newElem);
-        this.summWeight += newProd.getScale();
     };
     Scales.prototype.getNameList = function () {
-        return this.masProduct;
+        return this.masProduct.map(function (v, i, a) { return v.name; });
     };
     Scales.prototype.getSumScale = function () {
-        return this.summWeight;
+        function sum(r, v, i, a) {
+            return r + v.scale;
+        }
+        return this.masProduct.reduce(sum, 0);
     };
     return Scales;
 }());
