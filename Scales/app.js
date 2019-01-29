@@ -16,15 +16,14 @@ var Scales = /** @class */ (function () {
         this.masProduct = [];
     }
     Scales.prototype.add = function (newProd) {
-        var newElem = { name: newProd.getName(), scale: newProd.getScale() };
-        this.masProduct.push(newElem);
+        this.masProduct.push(newProd);
     };
     Scales.prototype.getNameList = function () {
-        return this.masProduct.map(function (v, i, a) { return v.name; });
+        return this.masProduct.map(function (v, i, a) { return v.getName(); });
     };
     Scales.prototype.getSumScale = function () {
         function sum(r, v, i, a) {
-            return r + v.scale;
+            return r + v.getScale();
         }
         return this.masProduct.reduce(sum, 0);
     };

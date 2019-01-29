@@ -1,6 +1,6 @@
 class Scales {
 
-    protected masProduct:Array<object>;
+    protected masProduct:Array<Product>;
     
     constructor() {
    
@@ -9,15 +9,14 @@ class Scales {
     }
 
     public add(newProd:Product):void{
-        var newElem:{name:string,scale:number}={name:newProd.getName(),scale:newProd.getScale()}
-        this.masProduct.push(newElem);
+        this.masProduct.push(newProd);
     }
     public getNameList():Array<string> {
-        return this.masProduct.map((v:{name:string,scale:number},i:number,a:Array<object>):string => {return v.name});
+        return this.masProduct.map((v:Product,i:number,a:Array<Product>):string => {return v.getName()});
     }
     public getSumScale():number {
-        function sum(r:number,v:{name:string,scale:number},i:number,a:Array<object>):number{
-            return r+v.scale;
+        function sum(r:number,v:Product,i:number,a:Array<Product>):number{
+            return r+v.getScale();
         }
         return this.masProduct.reduce(sum,0);
     }
