@@ -1,3 +1,9 @@
+interface Product {
+    getName():string;
+    getScale():number;
+}
+
+
 class Scales {
 
     protected masProduct:Array<Product>;
@@ -22,10 +28,8 @@ class Scales {
     }
     
 }
-interface Product {
-    getName():string;
-    getScale():number;
-}
+
+
 
 
 class Apple implements Product{
