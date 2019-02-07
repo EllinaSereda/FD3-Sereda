@@ -1,17 +1,21 @@
 var Scales = /** @class */ (function () {
-    function Scales() {
-    }
-    Scales.prototype.getNameList = function (item) {
-        var mas = [];
+    function Scales(item) {
+        this.mas = [];
         for (var i = 0; i < item.getCount(); i++) {
-            mas.push(item.getItem(i).getName());
+            this.mas.push(item.getItem(i));
         }
-        return mas;
+    }
+    Scales.prototype.getNameList = function () {
+        var names = [];
+        for (var i = 0; i < this.mas.length; i++) {
+            names.push(this.mas[i].getName());
+        }
+        return names;
     };
-    Scales.prototype.getSumScale = function (item) {
+    Scales.prototype.getSumScale = function () {
         var summa = 0;
-        for (var i = 0; i < item.getCount(); i++) {
-            summa += item.getItem(i).getScale();
+        for (var i = 0; i < this.mas.length; i++) {
+            summa += this.mas[i].getScale();
         }
         return summa;
     };
@@ -68,8 +72,6 @@ var apple = new Product('Яблоко', 100);
 var apple2 = new Product('Яблоко', 130);
 var tomato = new Product('Помидор', 200);
 var orange = new Product('Апельсин', 145);
-var MyScale1 = new Scales();
-var MyScale2 = new Scales();
 var MyScales1 = new ScalesStorageEngineArray;
 var MyScales2 = new ScalesStorageEngineLocaleStorage;
 MyScales1.addItem(apple);
@@ -77,8 +79,10 @@ MyScales1.addItem(apple2);
 MyScales2.addItem(tomato);
 MyScales2.addItem(apple);
 MyScales2.addItem(orange);
-console.log(MyScale1.getNameList(MyScales1) + ' -  Взвешенные продукты первый способ');
-console.log(MyScale1.getSumScale(MyScales1) + ' -  Вес продуктов первый способ');
-console.log(MyScale2.getNameList(MyScales2) + ' -  Взвешенные продукты второй способ');
-console.log(MyScale2.getSumScale(MyScales2) + ' -  Вес продуктов второй способ');
+var MyScale1 = new Scales(MyScales1);
+var MyScale2 = new Scales(MyScales2);
+console.log(MyScale1.getNameList() + ' -  Взвешенные продукты первый способ');
+console.log(MyScale1.getSumScale() + ' -  Вес продуктов первый способ');
+console.log(MyScale2.getNameList() + ' -  Взвешенные продукты второй способ');
+console.log(MyScale2.getSumScale() + ' -  Вес продуктов второй способ');
 //# sourceMappingURL=app.js.map

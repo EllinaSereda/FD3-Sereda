@@ -7,18 +7,24 @@ interface IStorageEngine{
 
 
 class Scales <StorageEngine extends IStorageEngine> {
-
-    public getNameList(item:StorageEngine):Array<string> {
-        let mas:Array<string>=[];
-        for (let i=0;i<item.getCount();i++){
-            mas.push(item.getItem(i).getName());
-        }
-        return mas;
+private mas:Array<Product>
+constructor(item:StorageEngine){
+    this.mas=[];
+    for (let i=0;i<item.getCount();i++){
+        this.mas.push(item.getItem(i));
     }
-    public getSumScale(item:StorageEngine):number {
+}
+    public getNameList():Array<string> {
+        let names:Array<string>=[];
+        for (let i=0;i<this.mas.length;i++){
+            names.push(this.mas[i].getName());
+        }
+        return names;
+    }
+    public getSumScale():number {
         let summa:number=0;
-        for (let i=0;i<item.getCount();i++){
-            summa+=item.getItem(i).getScale();
+        for (let i=0;i<this.mas.length;i++){
+            summa+=this.mas[i].getScale();
         }
         return summa;
     }
@@ -84,8 +90,6 @@ var apple:Product=new Product('Яблоко',100);
 var apple2:Product=new Product('Яблоко',130);
 var tomato:Product=new Product('Помидор',200);
 var orange:Product=new Product('Апельсин',145);
-var MyScale1=new Scales<ScalesStorageEngineArray>();
-var MyScale2=new Scales<ScalesStorageEngineLocaleStorage>();
 var MyScales1:ScalesStorageEngineArray=new ScalesStorageEngineArray;
 var MyScales2:ScalesStorageEngineLocaleStorage=new ScalesStorageEngineLocaleStorage;
 MyScales1.addItem(apple);
@@ -93,7 +97,10 @@ MyScales1.addItem(apple2);
 MyScales2.addItem(tomato);
 MyScales2.addItem(apple);
 MyScales2.addItem(orange);
-console.log(MyScale1.getNameList(MyScales1) + ' -  Взвешенные продукты первый способ' );
-console.log(MyScale1.getSumScale(MyScales1) + ' -  Вес продуктов первый способ' );
-console.log(MyScale2.getNameList(MyScales2) + ' -  Взвешенные продукты второй способ' );
-console.log(MyScale2.getSumScale(MyScales2) + ' -  Вес продуктов второй способ' );
+var MyScale1=new Scales<ScalesStorageEngineArray>(MyScales1);
+var MyScale2=new Scales<ScalesStorageEngineLocaleStorage>(MyScales2);
+
+console.log(MyScale1.getNameList() + ' -  Взвешенные продукты первый способ' );
+console.log(MyScale1.getSumScale() + ' -  Вес продуктов первый способ' );
+console.log(MyScale2.getNameList() + ' -  Взвешенные продукты второй способ' );
+console.log(MyScale2.getSumScale() + ' -  Вес продуктов второй способ' );
