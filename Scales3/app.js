@@ -56,8 +56,8 @@ var ScalesStorageEngineLocaleStorage = /** @class */ (function () {
     };
     ScalesStorageEngineLocaleStorage.prototype.getItem = function (index) {
         var item = JSON.parse(localStorage.products)[index];
-        console.log(JSON.parse(localStorage.products)[index]);
-        return item;
+        var product = new Product(item.Name, item.Scale);
+        return product;
     };
     ScalesStorageEngineLocaleStorage.prototype.getCount = function () {
         return JSON.parse(localStorage.products).length;
@@ -75,6 +75,7 @@ var MyScales2 = new ScalesStorageEngineLocaleStorage;
 MyScales1.addItem(apple);
 MyScales1.addItem(apple2);
 MyScales2.addItem(tomato);
+MyScales2.addItem(apple);
 MyScales2.addItem(orange);
 console.log(MyScale1.getNameList(MyScales1) + ' -  Взвешенные продукты первый способ');
 console.log(MyScale1.getSumScale(MyScales1) + ' -  Вес продуктов первый способ');

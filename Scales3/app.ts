@@ -66,8 +66,9 @@ class ScalesStorageEngineLocaleStorage  implements IStorageEngine{
         localStorage.products=JSON.stringify(newMas);
     }
     getItem(index:number):Product{
-        let item:Product=<Product>JSON.parse(localStorage.products)[index]
-        return item;
+        let item:{Name:string, Scale:number}=JSON.parse(localStorage.products)[index];
+        let product:Product=new Product(item.Name,item.Scale)
+        return product;
     }
     getCount():number{
         return JSON.parse(localStorage.products).length;
@@ -90,6 +91,7 @@ var MyScales2:ScalesStorageEngineLocaleStorage=new ScalesStorageEngineLocaleStor
 MyScales1.addItem(apple);
 MyScales1.addItem(apple2);
 MyScales2.addItem(tomato);
+MyScales2.addItem(apple);
 MyScales2.addItem(orange);
 console.log(MyScale1.getNameList(MyScales1) + ' -  Взвешенные продукты первый способ' );
 console.log(MyScale1.getSumScale(MyScales1) + ' -  Вес продуктов первый способ' );
