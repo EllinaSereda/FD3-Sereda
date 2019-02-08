@@ -1,21 +1,18 @@
 var Scales = /** @class */ (function () {
-    function Scales(item) {
-        this.mas = [];
-        for (var i = 0; i < item.getCount(); i++) {
-            this.mas.push(item.getItem(i));
-        }
+    function Scales(storage) {
+        this.storage = storage;
     }
     Scales.prototype.getNameList = function () {
         var names = [];
-        for (var i = 0; i < this.mas.length; i++) {
-            names.push(this.mas[i].getName());
+        for (var i = 0; i < this.storage.getCount(); i++) {
+            names.push(this.storage.getItem(i).getName());
         }
         return names;
     };
     Scales.prototype.getSumScale = function () {
         var summa = 0;
-        for (var i = 0; i < this.mas.length; i++) {
-            summa += this.mas[i].getScale();
+        for (var i = 0; i < this.storage.getCount(); i++) {
+            summa += this.storage.getItem(i).getScale();
         }
         return summa;
     };

@@ -7,24 +7,20 @@ interface IStorageEngine{
 
 
 class Scales <StorageEngine extends IStorageEngine> {
-private mas:Array<Product>
-constructor(item:StorageEngine){
-    this.mas=[];
-    for (let i=0;i<item.getCount();i++){
-        this.mas.push(item.getItem(i));
-    }
+
+constructor(private storage:StorageEngine){
 }
     public getNameList():Array<string> {
         let names:Array<string>=[];
-        for (let i=0;i<this.mas.length;i++){
-            names.push(this.mas[i].getName());
+        for (let i=0;i<this.storage.getCount();i++){
+            names.push(this.storage.getItem(i).getName());
         }
         return names;
     }
     public getSumScale():number {
         let summa:number=0;
-        for (let i=0;i<this.mas.length;i++){
-            summa+=this.mas[i].getScale();
+        for (let i=0;i<this.storage.getCount();i++){
+            summa+=this.storage.getItem(i).getScale();
         }
         return summa;
     }
