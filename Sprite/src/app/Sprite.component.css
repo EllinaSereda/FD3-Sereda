@@ -1,0 +1,18 @@
+.Sprite .rel{
+  position: relative;
+  width:137px;
+  height:193px;
+}
+
+.Sprite .sp{
+  position: relative;
+  position:absolute;
+  background-image: url("http://fe.it-academy.by/Examples/cards2.png");
+}
+.Sprite span{
+  display:block;
+
+  width:137px;
+  height:193px;
+ 
+}
