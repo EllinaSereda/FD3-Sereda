@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { makeStateKey } from '@angular/platform-browser';
 
 @Component({
   moduleId: module.id,
-  selector: 'sprite',
-  templateUrl: 'Sprite.component.html',
-  styleUrls: ['Sprite.component.css']
+  selector: 'page',
+  templateUrl: 'page.component.html',
+  styleUrls: ['page.component.css']
 })
-export class Sprite {
+export class PageComponent {
   private mas:Array<Array<number>>=[];
+  public cardNumber:number=34;
   createPos():Array<Array<number>>{
     let x:number=0;
     let y:number=0;
@@ -31,18 +31,15 @@ export class Sprite {
         x+=1;
       }
     }
-    console.log(this.mas);
     return this.mas;
   }
   getX(x:number):number{
     this.createPos();
-    console.log(this.mas[0]);
     return this.mas[x][0];
   }
   getY(y:number):number{
-    //this.createPos();
     return this.mas[y][1];
   }
 
-
 }
+
