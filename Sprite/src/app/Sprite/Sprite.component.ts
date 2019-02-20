@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { makeStateKey } from '@angular/platform-browser';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -12,5 +11,9 @@ export class Sprite {
   public left:number;
   @Input('top')
   public top:number;
+  @Input('url')
+  public url:string;
 
+  @Output("card-change")
+  public changeCard:EventEmitter<void>=new EventEmitter<void>();
 }

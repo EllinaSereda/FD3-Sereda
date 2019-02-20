@@ -1,2 +1,2 @@
-<p>Выбранная карта № {{cardNumber+1}}</p>
-<sprite [left]=getX(cardNumber) [top]=getY(cardNumber)></sprite>
+<p>Выбранная карта № {{getCard()+1}}</p>
+<sprite (card-change)="cardChanged()"  [left]=getX() [top]=getY() [style.width.px]=getWidth() [style.height.px]=getHeight() [url]=getUrl()></sprite>
