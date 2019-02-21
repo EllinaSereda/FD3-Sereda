@@ -1,4 +1,2 @@
-<form #myForm="ngForm">
-    <input type="number" #apples ngModule (change)="null"/>
-    <span>У вас {{apples.value|numword:'яблоко':'яблока':'яблок'}}</span>
-</form>
+ <input type="number" #apples  (change)="null"/>
+<span>У вас {{apples.value|numword:'яблоко':'яблока':'яблок'}}</span>
