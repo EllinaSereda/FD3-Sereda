@@ -1,0 +1,12 @@
+.Cash{
+    width:280px;
+    border:1px solid black;
+    padding:20px;
+    margin:10px;
+    float:left;
+    text-align: center;
+
+}
+.Cash input[type="number"]{
+    width:50px;
+}

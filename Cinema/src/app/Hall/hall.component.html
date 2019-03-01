@@ -1,0 +1,8 @@
+<div click="false" className="Hall">
+     <h1>Кинотеатр</h1>
+    <div>Количество свободных мест: {{available}}</div>
+    <div>Количество занятых мест: {{occupied}}</div>
+    <div>Всего мест в зале: {{total}}</div>
+    <cash (change)="upDate()" type="Интернет касса">Загрузка</cash>
+    <cash (change)="upDate()" type="Очная касса">Загрузка</cash>
+</div>

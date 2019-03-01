@@ -1,0 +1,7 @@
+<div class='Cash' >
+    <h2>{{name}}</h2>
+    <label for="numb">Введите количество билетов:</label>
+    <input #numb type="number" />
+    <input  type="button" value="заказать" (click)="getTicket(numbRef.nativeElement.value)" />
+    <p>{{res}}</p>
+</div>
